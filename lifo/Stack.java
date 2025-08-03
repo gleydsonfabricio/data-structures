@@ -2,7 +2,7 @@ public class Stack<E>{
 	
 	private E[] stack;
 	private int top;
-	private static final int DEFAULT_CAPACITY = 19;
+	private static final int DEFAULT_CAPACITY = 20;
 	
 	public Stack(){
 		this(DEFAULT_CAPACITY);
@@ -74,9 +74,5 @@ public class Stack<E>{
 		return index;
 
 	}
-
-
-	
-
 
 }
