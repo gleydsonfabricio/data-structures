@@ -21,6 +21,8 @@ public class StackTests{
 
 
 		stack.push("Bortoleto");
+		assert stack.toString().equals("Bortoleto");
+
 		stack.push("Hamilton");
 
 		assert stack.peek().equals("Hamilton"); // dont remove
@@ -33,7 +35,9 @@ public class StackTests{
 		stack.push("Norris");
 	
 		assert stack.isFull();
-
+		String str = "Bortoleto, Leclerc, Alonso, Piastri, Norris";
+		assert stack.toString().equals(str);
+		
 		//full stack, dont add
 		try{
 			stack.push("Antonelli");

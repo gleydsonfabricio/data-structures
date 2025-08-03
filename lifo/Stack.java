@@ -75,4 +75,25 @@ public class Stack<E>{
 
 	}
 
+	public String toString(){
+		Stack<E> aux = new Stack(this.size());
+		
+		String output = "";
+		while(!this.isEmpty()){
+
+			E current = this.pop();
+
+			if (aux.isEmpty()) output += current.toString();
+			else output = current.toString() + ", " + output;
+
+			aux.push(current);
+		}
+
+		while(!aux.isEmpty())
+			this.push(aux.pop());
+		
+		return output;
+
+	}
+
 }
