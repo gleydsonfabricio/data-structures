@@ -1,6 +1,6 @@
 public class QueueTests {
 
-    // execute com: java -ea QueueTests
+    // running: java -ea QueueTests
     public static void main(String[] args) {
 
         Queue<String> queue = new Queue<>(5);
@@ -8,7 +8,7 @@ public class QueueTests {
         assert queue.isEmpty();
         assert !queue.isFull();
 
-        // não pode remover
+        // cant remove
         try {
             queue.pop();
             assert false;
@@ -22,13 +22,16 @@ public class QueueTests {
         queue.push("Leclerc");
         assert !queue.isEmpty();
         assert queue.peek().equals("Leclerc");
+	assert queue.toString().equals("Leclerc");		
 
         queue.push("Hamilton");
         queue.push("Alonso");
 
+	assert queue.toString().equals("Leclerc, Hamilton, Alonso");
+
         assert queue.size() == 3;
 
-        // peek não remove
+        // peek dont remove
         assert queue.peek().equals("Leclerc");
         assert queue.size() == 3;
 
@@ -45,13 +48,13 @@ public class QueueTests {
         queue.push("Russell");
         assert queue.isFull();
 
-        // tentar enfileirar com fila cheia
+        // try push, isFull
         try {
             queue.push("Sainz");
             assert false;
         } catch (Exception e) {}
 
-        // teste de contains e indexOf
+	// contains and indexOf
         assert queue.contains("Piastri");
         assert !queue.contains("Gasly");
 
@@ -63,19 +66,19 @@ public class QueueTests {
         queue.pop();
         assert queue.size() == 4;
 
-        queue.peek(); // não muda tamanho
+        queue.peek(); //no change
         assert queue.size() == 4;
 
         queue.clear();
         assert queue.isEmpty();
         assert queue.size() == 0;
 
-        // fila reinicializada pode enfileirar de novo
+        // clear queue, can push
         queue.push("Verstappen");
         assert !queue.isEmpty();
         assert queue.peek().equals("Verstappen");
 
-        System.out.println("Todos os testes passaram!");
+        System.out.println("all tests passed successfully");
 
     }
 }
