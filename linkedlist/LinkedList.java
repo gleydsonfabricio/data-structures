@@ -61,6 +61,8 @@ public class LinkedList<T>{
 		nextNode.prev = newNode;
 		newNode.prev.next = newNode;
 
+		size++;
+
 	}
 
 	public T remove(int index){
@@ -137,17 +139,39 @@ public class LinkedList<T>{
 	}
 
 	public void removeByValue(T element){
-		//TODO
+		
+		Node<T> aux = head;
+		while (aux != null && !aux.value.equals(element))
+			aux = aux.next;	
+		
+		if (aux == null) return;
+		if (aux == head){ removeFirst(); return; }
+		if (aux == tail){ removeLast(); return; }
+
+		aux.prev.next = aux.next;
+		aux.next.prev = aux.prev;
+		size--;
+
 	}
 
 	public int indexOf(T element){
-		//TODO
+			
+		Node<T> aux = head;
+		
+		for (int i = 0; i < this.size(); i++){
+
+			if (aux.value.equals(element))
+				return i;
+
+			aux = aux.next;
+		}
+
 		return -1;
+		
 	}
 
 	public boolean contains(T element){
-		//TODO
-		return false;
+		return this.indexOf(element) != -1;
 	}
 
 	public void clear(){
@@ -156,8 +180,19 @@ public class LinkedList<T>{
 	}
 	
 	public String toString(){
-		//TODO
-		return "";
+		
+		if (isEmpty()) return "";	
+
+		String output = "";
+
+		Node<T> aux = head;
+		while(aux != null){
+			output += aux.value.toString() + ", ";	
+			aux = aux.next;
+		}
+
+		return output.substring(0, output.length() - 2);
+		
 	}
 
 	private Node<T> getNode(int index){
