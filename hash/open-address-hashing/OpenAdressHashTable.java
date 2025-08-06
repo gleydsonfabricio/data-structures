@@ -75,6 +75,7 @@ public class OpenAdressHashTable{
 			else if (table[hash].key == key){			
 				String out = table[hash].value;
 				table[hash] = deleted;
+				this.size--;
 				return out;
 			}
 			
